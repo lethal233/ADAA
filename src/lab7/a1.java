@@ -191,7 +191,7 @@ public class a1 {
         }
     }
 
-    static class Edge {
+    static class Edge  {
         int u;
         int v;
         long w;
@@ -207,55 +207,29 @@ public class a1 {
         }
     }
 
-//    public static void quickSort(Edge[] arr, int low, int high) {
-//        if (arr.length <= 0) {
-//            return;
-//        }
-//        if (low >= high) {
-//            return;
-//        }
-//        int left = low;
-//        int right = high;
-//        Edge temp = arr[left];
-//        while (left < right) {
-//            while (left < right && arr[right].w >= temp.w) {
-//                right--;
-//            }
-//            arr[left] = arr[right];
-//            while (left < right && arr[left].w <= temp.w) {
-//                left++;
-//            }
-//            arr[right] = arr[left];
-//        }
-//        arr[left] = temp;
-//        quickSort(arr, low, left - 1);
-//        quickSort(arr, left + 1, high);
-//    }
-
-
-    public static void quickSort(Edge[] arr, int lo, int hi) {
-        if (lo < hi) {
-            int p = partition(arr, lo, hi);
-            quickSort(arr, lo, p - 1);
-            quickSort(arr, p + 1, hi);
+    public static void quickSort(Edge[] arr, int low, int high) {
+        if (arr.length <= 0) {
+            return;
         }
-    }
-
-    public static int partition(Edge[] arr, int lo, int hi) {
-        Random r = new Random();
-        int p = r.nextInt(hi - lo + 1) + lo;
-        Edge pivot = arr[p];
-        swap(arr, p, hi);
-        int L = lo - 1;
-
-        for (int i = lo; i < hi; i++) {
-            if (arr[i].w <= pivot.w) {
-                ++L;
-                swap(arr, L, i);
+        if (low >= high) {
+            return;
+        }
+        int left = low;
+        int right = high;
+        Edge temp = arr[left];
+        while (left < right) {
+            while (left < right && arr[right].w >= temp.w) {
+                right--;
             }
+            arr[left] = arr[right];
+            while (left < right && arr[left].w <= temp.w) {
+                left++;
+            }
+            arr[right] = arr[left];
         }
-        swap(arr, L + 1, hi);
-        return L + 1;
+        arr[left] = temp;
+        quickSort(arr, low, left - 1);
+        quickSort(arr, left + 1, high);
     }
 
     public static void swap(Edge[] ary, int u, int v) {
@@ -263,4 +237,30 @@ public class a1 {
         ary[u] = ary[v];
         ary[v] = tmp;
     }
+
+//    public static void quickSort(Edge[] arr, int lo, int hi) {
+//        if (lo < hi) {
+//            int p = partition(arr, lo, hi);
+//            quickSort(arr, lo, p - 1);
+//            quickSort(arr, p + 1, hi);
+//        }
+//    }
+//
+//    public static int partition(Edge[] arr, int lo, int hi) {
+//        Random r = new Random();
+//        int p = r.nextInt(hi - lo + 1) + lo;
+//        Edge pivot = arr[p];
+//        swap(arr, p, hi);
+//        int L = lo - 1;
+//
+//        for (int i = lo; i < hi; i++) {
+//            if (arr[i].w <= pivot.w) {
+//                ++L;
+//                swap(arr, L, i);
+//            }
+//        }
+//        swap(arr, L + 1, hi);
+//        return L + 1;
+//    }
+
 }

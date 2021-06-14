@@ -11,7 +11,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Reader in = new Reader("C:\\Users\\Lori\\Documents\\Tencent Files\\695297502\\FileRecv\\草稿.txt");
+        String file = "";
+        Reader in = new Reader(file);
         PrintWriter out = new PrintWriter(System.out);
         int N = in.nextInt();
         int d = in.nextInt();
